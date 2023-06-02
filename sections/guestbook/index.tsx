@@ -21,7 +21,7 @@ const Guestbook = () => {
 					<ThemeSwitcher />
 				</div>
 			</div>
-			<Navbar variant='static' disableBlur disableShadow>
+			<Navbar variant='floating' disableBlur disableShadow className='z-[1]'>
 				<Navbar.Content
 					activeColor='secondary'
 					variant='underline'
