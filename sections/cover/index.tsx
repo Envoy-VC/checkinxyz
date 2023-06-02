@@ -7,7 +7,14 @@ const Cover = () => {
 	return (
 		<div className='!h-full min-h-[400px] lg:min-h-[800px] relative'>
 			<div className='absolute z-[10000] flex justify-end pr-8 pt-4 w-full'>
-				<ConnectButton />
+				<ConnectButton
+					showBalance={false}
+					accountStatus={{
+						smallScreen: 'avatar',
+						largeScreen: 'address',
+					}}
+					chainStatus='none'
+				/>
 			</div>
 
 			<Image

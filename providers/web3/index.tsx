@@ -15,7 +15,7 @@ import {
 	coinbaseWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-import { useTheme } from '@nextui-org/react';
+import { useTheme } from 'next-themes';
 
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
@@ -60,13 +60,13 @@ const config = createConfig({
 });
 
 const Web3Provider = (props: Props) => {
-	const { isDark } = useTheme();
+	const { theme } = useTheme();
 	return (
 		<WagmiConfig config={config}>
 			<RainbowKitProvider
 				chains={chains}
 				theme={
-					isDark
+					theme === 'dark'
 						? darkTheme({ overlayBlur: 'small' })
 						: lightTheme({ overlayBlur: 'small' })
 				}
