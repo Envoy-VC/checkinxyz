@@ -1,3 +1,5 @@
 import ThemeSwitcher from './theme-switcher';
+import GuestbookForm from './guestbook-form';
+import Entries from './entries';
 
-export { ThemeSwitcher };
+export { ThemeSwitcher, GuestbookForm, Entries };

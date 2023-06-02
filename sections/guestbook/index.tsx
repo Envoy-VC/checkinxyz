@@ -1,13 +1,16 @@
 import React from 'react';
 
-import { Input, Textarea, Button } from '@nextui-org/react';
-import { ThemeSwitcher } from '@/components';
+import { Input, Textarea, Button, Navbar } from '@nextui-org/react';
+import { ThemeSwitcher, GuestbookForm, Entries } from '@/components';
 
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const Guestbook = () => {
+	const [activeTab, setActiveTab] = React.useState<'guestbook' | 'entries'>(
+		'guestbook'
+	);
 	return (
 		<div className='p-8 !h-full min-h-[800px]'>
 			<div className='flex justify-between'>
@@ -18,29 +21,27 @@ const Guestbook = () => {
 					<ThemeSwitcher />
 				</div>
 			</div>
-			<div
-				className={`${inter.className} text-7xl font-extrabold text-center pt-24`}
-			>
-				Hi there!
-			</div>
-			<div
-				className={`${inter.className} text-xl font-medium text-center pt-4`}
-			>
-				The guestbook that&lsquo;s always open, always free, and always secure
-			</div>
-			<div>
-				<form className='flex flex-col gap-6 mt-12'>
-					<Input placeholder='Name' />
-					<Textarea placeholder='Enter your amazing ideas.' minRows={4} />
-					<Button
-						color='secondary'
-						size='lg'
-						className='text-white bg-[#9750DD] !w-fit mx-auto mt-16'
+			<Navbar variant='static' disableBlur disableShadow>
+				<Navbar.Content
+					activeColor='secondary'
+					variant='underline'
+					className='mx-auto'
+				>
+					<Navbar.Link
+						isActive={activeTab === 'guestbook'}
+						onClick={() => setActiveTab('guestbook')}
 					>
-						Sign
-					</Button>
-				</form>
-			</div>
+						Guestbook
+					</Navbar.Link>
+					<Navbar.Link
+						isActive={activeTab === 'entries'}
+						onClick={() => setActiveTab('entries')}
+					>
+						Entries
+					</Navbar.Link>
+				</Navbar.Content>
+			</Navbar>
+			{activeTab === 'guestbook' ? <GuestbookForm /> : <Entries />}
 		</div>
 	);
 };
