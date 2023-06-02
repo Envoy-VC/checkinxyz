@@ -1,82 +1,40 @@
-/* eslint-disable react/no-children-prop */
-import '@rainbow-me/rainbowkit/styles.css';
 import {
-	connectorsForWallets,
-	RainbowKitProvider,
-	lightTheme,
-	darkTheme,
-} from '@rainbow-me/rainbowkit';
-import {
-	injectedWallet,
-	metaMaskWallet,
-	trustWallet,
-	walletConnectWallet,
-	ledgerWallet,
-	coinbaseWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+	ThirdwebProvider,
+	metamaskWallet,
+	walletConnect,
+} from '@thirdweb-dev/react';
+import { Mumbai } from '@thirdweb-dev/chains';
 
-import { useTheme } from 'next-themes';
-
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import { WALLET_CONNECT_PROJECT_ID } from '@/utils/config';
 
 import { ReactNode } from 'react';
-
-import { ETH_CHAINS, WALLET_CONNECT_PROJECT_ID } from '@/utils/config';
-
 interface Props {
 	children: ReactNode;
 }
 
-const projectId = WALLET_CONNECT_PROJECT_ID;
+const metadata = {
+	name: 'checkinxyz',
+	description: 'A gasless web3 guestbook',
+	logoUrl: 'https://example.com/logo.png',
+	url: 'https://checkinxyz.vercel.app',
+	isDarkMode: true,
+};
 
-const { chains, publicClient } = configureChains(ETH_CHAINS, [
-	publicProvider(),
-]);
-
-const connectors = connectorsForWallets([
-	{
-		groupName: 'Recommended',
-		wallets: [
-			injectedWallet({ chains }),
-			metaMaskWallet({ projectId, chains }),
-			walletConnectWallet({ projectId, chains }),
-		],
-	},
-	{
-		groupName: 'Others',
-		wallets: [
-			trustWallet({ projectId, chains }),
-			ledgerWallet({ projectId, chains }),
-			coinbaseWallet({ chains, appName: 'DAPP KIT' }),
-		],
-	},
-]);
-
-const config = createConfig({
-	autoConnect: true,
-	connectors,
-	publicClient,
-});
-
-const Web3Provider = (props: Props) => {
-	const { theme } = useTheme();
+const Web3Provider = ({ children }: Props) => {
 	return (
-		<WagmiConfig config={config}>
-			<RainbowKitProvider
-				chains={chains}
-				theme={
-					theme === 'dark'
-						? darkTheme({ overlayBlur: 'small' })
-						: lightTheme({ overlayBlur: 'small' })
-				}
-				appInfo={{
-					appName: 'DAPP KIT',
-					learnMoreUrl: 'https://github.com/Envoy-VC-dapp-kit',
-				}}
-				children={props.children}
-			></RainbowKitProvider>
-		</WagmiConfig>
+		<ThirdwebProvider
+			activeChain={Mumbai}
+			autoConnect={false}
+			dAppMeta={metadata}
+			supportedWallets={[
+				metamaskWallet(),
+				walletConnect({
+					projectId: WALLET_CONNECT_PROJECT_ID,
+				}),
+			]}
+		>
+			{children}
+		</ThirdwebProvider>
 	);
 };
 

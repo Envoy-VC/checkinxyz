@@ -18,6 +18,12 @@
 			"@/*": ["./*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/**/*.d.ts", "components/icons/SunIcon.tsx"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"types/**/*.d.ts",
+		"components/icons/SunIcon.tsx"
+	],
 	"exclude": ["node_modules"]
 }

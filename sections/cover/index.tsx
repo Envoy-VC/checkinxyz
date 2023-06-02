@@ -1,19 +1,17 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectWallet } from '@thirdweb-dev/react';
 import { Image } from '@nextui-org/react';
+import { useTheme } from 'next-themes';
 
 import coverImage from '@/assets/cover.jpg';
 
 const Cover = () => {
+	const { theme } = useTheme();
 	return (
 		<div className='!h-full min-h-[400px] lg:min-h-[800px] relative'>
 			<div className='absolute z-[10000] flex justify-end pr-8 pt-4 w-full'>
-				<ConnectButton
-					showBalance={false}
-					accountStatus={{
-						smallScreen: 'avatar',
-						largeScreen: 'address',
-					}}
-					chainStatus='none'
+				<ConnectWallet
+					theme={theme === 'dark' ? 'dark' : 'light'}
+					btnTitle='Connect'
 				/>
 			</div>
 
