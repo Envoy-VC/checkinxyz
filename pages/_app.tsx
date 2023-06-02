@@ -18,18 +18,19 @@ const darkTheme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<NextThemesProvider
-			defaultTheme='system'
+			defaultTheme='light'
+			enableSystem={false}
 			attribute='class'
 			value={{
 				light: lightTheme.className,
 				dark: darkTheme.className,
 			}}
 		>
-			<NextUIProvider>
-				<Web3Provider>
+			<Web3Provider>
+				<NextUIProvider>
 					<Component {...pageProps} />
-				</Web3Provider>
-			</NextUIProvider>
+				</NextUIProvider>
+			</Web3Provider>
 		</NextThemesProvider>
 	);
 }

@@ -15,6 +15,8 @@ import {
 	coinbaseWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
+import { useTheme } from '@nextui-org/react';
+
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -58,14 +60,16 @@ const config = createConfig({
 });
 
 const Web3Provider = (props: Props) => {
+	const { isDark } = useTheme();
 	return (
 		<WagmiConfig config={config}>
 			<RainbowKitProvider
 				chains={chains}
-				theme={{
-					lightMode: lightTheme({ overlayBlur: 'small' }),
-					darkMode: darkTheme({ overlayBlur: 'small' }),
-				}}
+				theme={
+					isDark
+						? darkTheme({ overlayBlur: 'small' })
+						: lightTheme({ overlayBlur: 'small' })
+				}
 				appInfo={{
 					appName: 'DAPP KIT',
 					learnMoreUrl: 'https://github.com/Envoy-VC-dapp-kit',
