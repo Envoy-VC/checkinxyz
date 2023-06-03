@@ -4,6 +4,7 @@ import {
 	walletConnect,
 	smartWallet,
 	paperWallet,
+	localWallet,
 } from '@thirdweb-dev/react';
 import { Mumbai } from '@thirdweb-dev/chains';
 
@@ -38,7 +39,11 @@ const Web3Provider = ({ children }: Props) => {
 					factoryAddress: ACCOUNT_FACTORY_ADDRESS,
 					gasless: true,
 					thirdwebApiKey: TW_API_KEY,
-					personalWallets: [metamaskWallet(), walletConnect()],
+					personalWallets: [
+						metamaskWallet(),
+						walletConnect(),
+						localWallet({ persist: true }),
+					],
 				}),
 				metamaskWallet(),
 				walletConnect({
@@ -47,6 +52,7 @@ const Web3Provider = ({ children }: Props) => {
 				paperWallet({
 					clientId: PAPER_API_KEY,
 				}),
+				localWallet({ persist: true }),
 			]}
 		>
 			{children}
