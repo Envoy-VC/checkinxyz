@@ -7,3 +7,6 @@ export const ACCOUNT_FACTORY_ADDRESS =
 export const TW_API_KEY = process.env.NEXT_PUBLIC_TW_API_KEY || '';
 
 export const PAPER_API_KEY = process.env.NEXT_PUBLIC_PAPER_API_KEY || '';
+
+export const GUESTBOOK_CONTRACT_ADDRESS =
+	'0x6Bf13132D8E8f74F3B9bA253B15B3f88EdDD6942';
