@@ -1,10 +1,9 @@
 export const WALLET_CONNECT_PROJECT_ID =
 	process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || '';
 
-export const SITE_NAME = 'boilr3';
-export const SITE_DESCRIPTION =
-	'The Ultimate Next.js dApp Boilerplate with RainbowKit, Tailwind CSS & WAGMI';
-export const SITE_URL = 'https://boilr3.vercel.app';
+export const ACCOUNT_FACTORY_ADDRESS =
+	process.env.NEXT_PUBLIC_ACCOUNT_FACTORY_ADDRESS || '';
 
-export const SOCIAL_TWITTER = 'Envoy_1084';
-export const SOCIAL_GITHUB = 'Envoy-VC/boilr3';
+export const TW_API_KEY = process.env.NEXT_PUBLIC_TW_API_KEY || '';
+
+export const PAPER_API_KEY = process.env.NEXT_PUBLIC_PAPER_API_KEY || '';
