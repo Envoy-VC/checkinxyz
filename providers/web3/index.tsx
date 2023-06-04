@@ -41,17 +41,12 @@ const Web3Provider = ({ children }: Props) => {
 					personalWallets: [
 						metamaskWallet(),
 						walletConnect(),
+						paperWallet({
+							clientId: PAPER_API_KEY,
+						}),
 						localWallet({ persist: true }),
 					],
 				}),
-				metamaskWallet(),
-				walletConnect({
-					projectId: WALLET_CONNECT_PROJECT_ID,
-				}),
-				paperWallet({
-					clientId: PAPER_API_KEY,
-				}),
-				localWallet({ persist: true }),
 			]}
 		>
 			{children}
