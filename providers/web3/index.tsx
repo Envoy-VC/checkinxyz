@@ -22,8 +22,7 @@ interface Props {
 
 const metadata = {
 	name: 'checkinxyz',
-	description: 'A gasless web3 guestbook',
-	logoUrl: 'https://example.com/logo.png',
+	description: 'A Gasless guestbook for the decentralized web',
 	url: 'https://checkinxyz.vercel.app',
 	isDarkMode: true,
 };
