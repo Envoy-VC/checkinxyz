@@ -9,7 +9,7 @@ export const TW_API_KEY = process.env.NEXT_PUBLIC_TW_API_KEY || '';
 export const PAPER_API_KEY = process.env.NEXT_PUBLIC_PAPER_API_KEY || '';
 
 export const GUESTBOOK_CONTRACT_ADDRESS =
-	'0x6Bf13132D8E8f74F3B9bA253B15B3f88EdDD6942';
+	'0x15ad4725fD6991AD5139F83eB645EA1bB16c49a0';
 
 export const ABI = [
 	{
