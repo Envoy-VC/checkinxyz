@@ -36,13 +36,15 @@ const Entries = () => {
 			<div className='flex flex-col gap-2 pt-12'>
 				{isLoading
 					? Array(1, 2, 3, 4).map((index) => <EntryCard key={index} />)
-					: entries?.map((entry: EntryProps, index: number) => (
-							<EntryCard
-								key={index}
-								name={entry.name}
-								message={entry.message}
-							/>
-					  ))}
+					: entries
+							?.reverse()
+							?.map((entry: EntryProps, index: number) => (
+								<EntryCard
+									key={index}
+									name={entry.name}
+									message={entry.message}
+								/>
+							))}
 			</div>
 		</div>
 	);
