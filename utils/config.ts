@@ -13,26 +13,6 @@ export const GUESTBOOK_CONTRACT_ADDRESS =
 
 export const ABI = [
 	{
-		inputs: [
-			{
-				internalType: 'string',
-				name: '_uri',
-				type: 'string',
-			},
-		],
-		name: 'createEntry',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [],
-		name: 'deleteGuesbook',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
 		anonymous: false,
 		inputs: [
 			{
@@ -52,21 +32,21 @@ export const ABI = [
 		type: 'event',
 	},
 	{
-		inputs: [],
-		name: 'renounceOwnership',
+		inputs: [
+			{
+				internalType: 'string',
+				name: '_uri',
+				type: 'string',
+			},
+		],
+		name: 'createEntry',
 		outputs: [],
 		stateMutability: 'nonpayable',
 		type: 'function',
 	},
 	{
-		inputs: [
-			{
-				internalType: 'address',
-				name: 'newOwner',
-				type: 'address',
-			},
-		],
-		name: 'transferOwnership',
+		inputs: [],
+		name: 'deleteGuestbook',
 		outputs: [],
 		stateMutability: 'nonpayable',
 		type: 'function',
@@ -114,6 +94,26 @@ export const ABI = [
 			},
 		],
 		stateMutability: 'view',
+		type: 'function',
+	},
+	{
+		inputs: [],
+		name: 'renounceOwnership',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'address',
+				name: 'newOwner',
+				type: 'address',
+			},
+		],
+		name: 'transferOwnership',
+		outputs: [],
+		stateMutability: 'nonpayable',
 		type: 'function',
 	},
 ];
