@@ -20,14 +20,15 @@ const Entries = () => {
 
 	useEffect(() => {
 		async function resolveEntries() {
+			const entries = [];
 			for (let i = 0; i < data.length; ++i) {
 				const entry = await storage?.downloadJSON(`ipfs://${data[i]}`);
-				setEntries((entries) => [...entries, entry]);
+				entries.push(entry);
 			}
+			setEntries(entries.reverse());
 		}
 		if (data) {
 			resolveEntries();
-			console.log(entries);
 		}
 	}, [data]);
 
